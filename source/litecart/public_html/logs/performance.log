@@ -1,0 +1,3192 @@
+[2018-10-23 10:05:03 UTC] Warning: A MySQL connection established in 1.000 s.
+[2018-10-23 10:05:04 UTC] Warning: A MySQL connection established in 1.003 s.
+[2018-10-24 19:14:26 Asia/Shanghai] Warning: A MySQL query executed in 7.999 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 19:14:18')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 19:14:18')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 19:14:18')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 19:14:18')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 19:14:31 Asia/Shanghai] Warning: A MySQL query executed in 5.163 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 19:14:26')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 19:14:26')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 19:14:26')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 19:14:26')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 19:14:36 Asia/Shanghai] Warning: A MySQL query executed in 4.529 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 19:14:31')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 19:14:31')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 19:14:31')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 19:14:31')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:21:13 Asia/Shanghai] Warning: A MySQL query executed in 13.525 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('4007', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (4007)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:21:00')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:21:00')
+        and p.id not in ('82829')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:21:00')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:21:00')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:21:26 Asia/Shanghai] Warning: A MySQL query executed in 11.860 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('4007', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (4007)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:21:14')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:21:14')
+        and p.id not in ('82829')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:21:14')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:21:14')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:24:39 Asia/Shanghai] Warning: A MySQL query executed in 8.241 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:24:30')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:24:30')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:24:30')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:24:30')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:24:44 Asia/Shanghai] Warning: A MySQL query executed in 5.774 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:24:39')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:24:39')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:24:39')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:24:39')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:24:50 Asia/Shanghai] Warning: A MySQL query executed in 5.286 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:24:44')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:24:44')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:24:44')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:24:44')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:25:27 Asia/Shanghai] Warning: A MySQL query executed in 12.460 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:25:14')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:25:14')
+        and p.id not in ('82798')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:25:14')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:25:14')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:25:40 Asia/Shanghai] Warning: A MySQL query executed in 12.920 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:25:27')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:25:27')
+        and p.id not in ('82798')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:25:27')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:25:27')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:36:41 Asia/Shanghai] Warning: A MySQL query executed in 12.917 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:36:28')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:36:28')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:36:28')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:36:28')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:36:54 Asia/Shanghai] Warning: A MySQL query executed in 12.627 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:36:41')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:36:41')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:36:41')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:36:41')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:37:07 Asia/Shanghai] Warning: A MySQL query executed in 12.753 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:36:54')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:36:54')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:36:54')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:36:54')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:37:21 Asia/Shanghai] Warning: A MySQL query executed in 12.915 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:37:08')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:37:08')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:37:08')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:37:08')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:37:34 Asia/Shanghai] Warning: A MySQL query executed in 12.928 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:37:21')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:37:21')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:37:21')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:37:21')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:37:48 Asia/Shanghai] Warning: A MySQL query executed in 12.544 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('505', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (505)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:37:35')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:37:35')
+        and p.id not in ('82806')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:37:35')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:37:35')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike New England Patriots Men\'s Legend Navy  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:38:04 Asia/Shanghai] Warning: A MySQL query executed in 12.424 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:37:52')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:37:52')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:37:52')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:37:52')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:38:10 Asia/Shanghai] Warning: A MySQL query executed in 13.337 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:37:57')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:37:57')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:37:57')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:37:57')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:38:14 Asia/Shanghai] Warning: A MySQL query executed in 9.471 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:04')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:04')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:04')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:04')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:38:19 Asia/Shanghai] Warning: A MySQL query executed in 9.268 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:10')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:10')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:10')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:10')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:38:22 Asia/Shanghai] Warning: A MySQL query executed in 8.132 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:14')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:14')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:14')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:14')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:38:29 Asia/Shanghai] Warning: A MySQL query executed in 9.542 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:19')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:19')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:19')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:19')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:38:33 Asia/Shanghai] Warning: A MySQL query executed in 3.906 s. Query: update `litecart`.`lc_products`
+    set views = views + 1
+    where id = '134351'
+    limit 1;
+[2018-10-24 20:38:33 Asia/Shanghai] Warning: A MySQL query executed in 10.487 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:22')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:22')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:22')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:22')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:38:39 Asia/Shanghai] Warning: A MySQL query executed in 6.490 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:38:33')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:38:33')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:38:33')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:38:33')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 12:38:44 UTC] Warning: A MySQL connection established in 1.030 s.
+[2018-10-24 12:38:44 UTC] Warning: A MySQL connection established in 1.030 s.
+[2018-10-24 20:44:00 Asia/Shanghai] Warning: A MySQL query executed in 7.628 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:43:52')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:43:52')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:43:52')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:43:52')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:44:05 Asia/Shanghai] Warning: A MySQL query executed in 4.680 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:00')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:00')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:00')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:00')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:44:10 Asia/Shanghai] Warning: A MySQL query executed in 5.226 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:05')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:05')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:05')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:05')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:44:27 Asia/Shanghai] Warning: A MySQL query executed in 7.051 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:20')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:20')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:20')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:20')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:44:35 Asia/Shanghai] Warning: A MySQL query executed in 7.853 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:27')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:27')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:27')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:27')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:44:39 Asia/Shanghai] Warning: A MySQL query executed in 4.134 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:35')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:35')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:35')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:35')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:45:01 Asia/Shanghai] Warning: A MySQL query executed in 9.532 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:44:52')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:44:52')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:44:52')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:44:52')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:10 Asia/Shanghai] Warning: A MySQL query executed in 8.893 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:02')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:02')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:02')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:02')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:20 Asia/Shanghai] Warning: A MySQL query executed in 8.797 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:11')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:11')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:11')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:11')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:29 Asia/Shanghai] Warning: A MySQL query executed in 9.360 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:20')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:20')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:20')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:20')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:39 Asia/Shanghai] Warning: A MySQL query executed in 9.103 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:30')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:30')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:30')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:30')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:48 Asia/Shanghai] Warning: A MySQL query executed in 9.035 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:39')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:39')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:39')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:39')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:45:58 Asia/Shanghai] Warning: A MySQL query executed in 9.430 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:49')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:49')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:49')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:49')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:46:09 Asia/Shanghai] Warning: A MySQL query executed in 9.781 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:45:59')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:45:59')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:45:59')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:45:59')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:46:18 Asia/Shanghai] Warning: A MySQL query executed in 9.206 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:46:09')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:46:09')
+        and p.id not in ('750')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:46:09')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:46:09')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Limited Black ized  Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:46:32 Asia/Shanghai] Warning: A MySQL query executed in 7.223 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:46:25')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:46:25')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:46:25')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:46:25')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-24 20:46:37 Asia/Shanghai] Warning: A MySQL query executed in 4.897 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:46:32')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:46:32')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:46:32')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:46:32')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-24 20:46:41 Asia/Shanghai] Warning: A MySQL query executed in 4.290 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:46:37')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:46:37')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:46:37')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:46:37')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-24 20:47:14 Asia/Shanghai] Warning: A MySQL query executed in 8.705 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Atlanta Falcons Youth Limited White ized  Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:47:05')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:47:05')
+        and p.id not in ('749')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:47:05')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:47:05')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Atlanta Falcons Youth Limited White ized  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-24 20:47:24 Asia/Shanghai] Warning: A MySQL query executed in 9.269 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Atlanta Falcons Youth Limited White ized  Jersey%', 1, 0)
+        
+        
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-24 20:47:14')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-24 20:47:14')
+        and p.id not in ('749')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-24 20:47:14')
+        and (year(end_date) < '1971' or end_date >= '2018-10-24 20:47:14')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Atlanta Falcons Youth Limited White ized  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-25 11:32:40 Asia/Shanghai] Warning: A MySQL query executed in 8.218 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-25 11:32:32')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-25 11:32:32')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-25 11:32:32')
+        and (year(end_date) < '1971' or end_date >= '2018-10-25 11:32:32')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-25 11:32:45 Asia/Shanghai] Warning: A MySQL query executed in 5.610 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-25 11:32:40')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-25 11:32:40')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-25 11:32:40')
+        and (year(end_date) < '1971' or end_date >= '2018-10-25 11:32:40')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-25 11:32:50 Asia/Shanghai] Warning: A MySQL query executed in 4.663 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-25 11:32:46')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-25 11:32:46')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-25 11:32:46')
+        and (year(end_date) < '1971' or end_date >= '2018-10-25 11:32:46')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-10-25 11:34:08 Asia/Shanghai] Warning: A MySQL query executed in 11.903 s. Query: select p.*, pi.name, pi.short_description, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price)) as final_price,
+    match(pi.name, pi.short_description, pi.description) against ('*jer*' in boolean mode) as relevance
+    from (
+      select id, code, mpn, gtin, sku, manufacturer_id, default_category_id, keywords, product_groups, image, tax_class_id, quantity, views, purchases, date_updated, date_created
+      from `litecart`.`lc_products`
+      where status = 1
+      and (date_valid_from <= '2018-10-25 11:33:57')
+      and (year(date_valid_to) < '1971' or date_valid_to >= '2018-10-25 11:33:57')
+    ) p
+    left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+    left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+    left join (
+      select product_id, if(`USD`, `USD` / 1, `USD`) as price
+      from `litecart`.`lc_products_prices`
+    ) pp on (pp.product_id = p.id)
+    left join (
+      select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+      from `litecart`.`lc_products_campaigns`
+      where (start_date <= '2018-10-25 11:33:57')
+      and (year(end_date) < '1971' or end_date >= '2018-10-25 11:33:57')
+      order by end_date asc
+    ) pc on (pc.product_id = p.id)
+    having relevance > 0
+    or p.code regexp 'j([ -\\./]+)?e([ -\\./]+)?r'
+    or p.sku regexp 'j([ -\\./]+)?e([ -\\./]+)?r'
+    or p.mpn regexp 'j([ -\\./]+)?e([ -\\./]+)?r'
+    or p.gtin regexp 'j([ -\\./]+)?e([ -\\./]+)?r'
+    order by relevance desc;
+[2018-10-25 11:36:00 Asia/Shanghai] Warning: A MySQL query executed in 15.960 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Atlanta Falcons Youth Legend Red  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('467', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (467)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-25 11:35:44')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-25 11:35:44')
+        and p.id not in ('41759')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-25 11:35:44')
+        and (year(end_date) < '1971' or end_date >= '2018-10-25 11:35:44')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Atlanta Falcons Youth Legend Red  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-25 11:36:15 Asia/Shanghai] Warning: A MySQL query executed in 14.264 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Atlanta Falcons Youth Legend Red  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('467', categories), 1, 0)
+        
+        
+        
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (467)
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-25 11:36:01')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-25 11:36:01')
+        and p.id not in ('41759')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-25 11:36:01')
+        and (year(end_date) < '1971' or end_date >= '2018-10-25 11:36:01')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Atlanta Falcons Youth Legend Red  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-10-26 10:30:47 Asia/Shanghai] Warning: A MySQL query executed in 7.927 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-26 10:30:39')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-26 10:30:39')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-26 10:30:39')
+        and (year(end_date) < '1971' or end_date >= '2018-10-26 10:30:39')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        and campaign_price > 0
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      limit 1;
+    
+[2018-10-26 10:30:52 Asia/Shanghai] Warning: A MySQL query executed in 5.188 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-26 10:30:47')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-26 10:30:47')
+        
+        group by ptc.product_id
+        order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+        limit 20
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-26 10:30:47')
+        and (year(end_date) < '1971' or end_date >= '2018-10-26 10:30:47')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by (p.purchases / (datediff(now(), p.date_created)/7)) desc, (p.views / (datediff(now(), p.date_created)/7)) desc
+      ;
+    
+[2018-10-26 10:30:59 Asia/Shanghai] Warning: A MySQL query executed in 6.197 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          
+          
+          
+          
+          
+        )
+        and (p.date_valid_from <= '2018-10-26 10:30:53')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-10-26 10:30:53')
+        
+        group by ptc.product_id
+        order by p.date_created desc
+        limit 10
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-10-26 10:30:53')
+        and (year(end_date) < '1971' or end_date >= '2018-10-26 10:30:53')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        
+        
+        
+      )
+      order by p.date_created desc
+      ;
+    
+[2018-11-09 09:48:55 UTC] Warning: A MySQL connection established in 1.045 s.
+[2018-11-09 09:48:56 UTC] Warning: A MySQL connection established in 1.045 s.
+[2018-11-09 09:48:57 UTC] Warning: A MySQL connection established in 1.030 s.
+[2018-11-09 09:48:59 UTC] Warning: A MySQL connection established in 1.030 s.
+[2018-11-09 09:49:00 UTC] Warning: A MySQL connection established in 1.030 s.
+[2018-11-26 15:02:15 Asia/Shanghai] Warning: A MySQL query executed in 3.658 s. Query: select id, decimals, separate from `litecart`.`lc_quantity_units`
+            where id = 1
+            limit 1;
+[2018-12-09 20:42:27 Asia/Shanghai] Warning: A MySQL query executed in 6.202 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Andy Levitre Atlanta Falcons Women\'s Legend Red  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('397', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-258', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-256', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (397)
+          
+          
+          or (find_in_set('94-258', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-256', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-09 20:42:21')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-09 20:42:21')
+        and p.id not in ('144214')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-09 20:42:21')
+        and (year(end_date) < '1971' or end_date >= '2018-12-09 20:42:21')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Andy Levitre Atlanta Falcons Women\'s Legend Red  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-09 20:42:52 Asia/Shanghai] Warning: A MySQL query executed in 5.438 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Andy Levitre Atlanta Falcons Women\'s Game Red   Team Color Jersey%', 1, 0)
+        
+        + if(find_in_set('397', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-258', p.product_groups), 1, 0) + if(find_in_set('95-279', p.product_groups), 1, 0) + if(find_in_set('96-256', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (397)
+          
+          
+          or (find_in_set('94-258', product_groups))or (find_in_set('95-279', product_groups))or (find_in_set('96-256', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-09 20:42:46')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-09 20:42:46')
+        and p.id not in ('2057')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-09 20:42:46')
+        and (year(end_date) < '1971' or end_date >= '2018-12-09 20:42:46')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Andy Levitre Atlanta Falcons Women\'s Game Red   Team Color Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-09 20:43:43 Asia/Shanghai] Warning: A MySQL query executed in 5.445 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Adrian Wilson Arizona Cardinals Women\'s Game Red   Team Color Jersey%', 1, 0)
+        
+        + if(find_in_set('397', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-258', p.product_groups), 1, 0) + if(find_in_set('95-279', p.product_groups), 1, 0) + if(find_in_set('96-256', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (397)
+          
+          
+          or (find_in_set('94-258', product_groups))or (find_in_set('95-279', product_groups))or (find_in_set('96-256', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-09 20:43:37')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-09 20:43:37')
+        and p.id not in ('1514')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-09 20:43:37')
+        and (year(end_date) < '1971' or end_date >= '2018-12-09 20:43:37')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Adrian Wilson Arizona Cardinals Women\'s Game Red   Team Color Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-11 10:43:41 Asia/Shanghai] Warning: A MySQL query executed in 6.815 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Andy Janovich Denver Broncos Men\'s Game Orange   Team Color Jersey%', 1, 0)
+        
+        + if(find_in_set('624', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-279', p.product_groups), 1, 0) + if(find_in_set('96-264', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (624)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-279', product_groups))or (find_in_set('96-264', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-11 10:43:35')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-11 10:43:35')
+        and p.id not in ('8114')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-11 10:43:35')
+        and (year(end_date) < '1971' or end_date >= '2018-12-11 10:43:35')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Andy Janovich Denver Broncos Men\'s Game Orange   Team Color Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-11 10:44:16 Asia/Shanghai] Warning: A MySQL query executed in 5.528 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Andy Dalton Cincinnati Bengals Men\'s Game Orange   Alternate Jersey%', 1, 0)
+        
+        + if(find_in_set('624', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-279', p.product_groups), 1, 0) + if(find_in_set('96-264', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (624)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-279', product_groups))or (find_in_set('96-264', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-11 10:44:10')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-11 10:44:10')
+        and p.id not in ('5760')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-11 10:44:10')
+        and (year(end_date) < '1971' or end_date >= '2018-12-11 10:44:10')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Andy Dalton Cincinnati Bengals Men\'s Game Orange   Alternate Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-12 16:56:46 Asia/Shanghai] Warning: A MySQL query executed in 5.850 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike A.J. Jefferson Atlanta Falcons Men\'s Legend Red  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('1905', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-256', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1905)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-256', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-12 16:56:40')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-12 16:56:40')
+        and p.id not in ('46513')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-12 16:56:40')
+        and (year(end_date) < '1971' or end_date >= '2018-12-12 16:56:40')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike A.J. Jefferson Atlanta Falcons Men\'s Legend Red  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-12 16:57:40 Asia/Shanghai] Warning: A MySQL query executed in 5.763 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike A.J. Jefferson Atlanta Falcons Men\'s Legend Red  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('1905', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-256', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1905)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-256', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-12 16:57:34')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-12 16:57:34')
+        and p.id not in ('46513')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-12 16:57:34')
+        and (year(end_date) < '1971' or end_date >= '2018-12-12 16:57:34')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike A.J. Jefferson Atlanta Falcons Men\'s Legend Red  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-17 16:28:24 Asia/Shanghai] Warning: A MySQL query executed in 6.650 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Al-Hajj Shabazz Baltimore Ravens Men\'s Legend Purple  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('1976', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-260', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1976)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-260', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-17 16:28:17')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-17 16:28:17')
+        and p.id not in ('48618')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-17 16:28:17')
+        and (year(end_date) < '1971' or end_date >= '2018-12-17 16:28:17')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Al-Hajj Shabazz Baltimore Ravens Men\'s Legend Purple  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-17 16:28:30 Asia/Shanghai] Warning: A MySQL query executed in 6.097 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Al-Hajj Shabazz Baltimore Ravens Men\'s Legend Purple  Color Rush  Jersey%', 1, 0)
+        
+        + if(find_in_set('1976', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-260', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1976)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-260', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-17 16:28:24')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-17 16:28:24')
+        and p.id not in ('48618')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-17 16:28:24')
+        and (year(end_date) < '1971' or end_date >= '2018-12-17 16:28:24')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Al-Hajj Shabazz Baltimore Ravens Men\'s Legend Purple  Color Rush  Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-17 16:28:42 Asia/Shanghai] Warning: A MySQL query executed in 5.972 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Minnesota Vikings Men\'s Legend Purple  Staff Practice Long Sleeve Performance T-Shirt%', 1, 0)
+        
+        + if(find_in_set('1976', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-260', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1976)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-260', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-17 16:28:36')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-17 16:28:36')
+        and p.id not in ('26254')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-17 16:28:36')
+        and (year(end_date) < '1971' or end_date >= '2018-12-17 16:28:36')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Minnesota Vikings Men\'s Legend Purple  Staff Practice Long Sleeve Performance T-Shirt%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-17 16:44:46 Asia/Shanghai] Warning: A MySQL query executed in 6.064 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike Baltimore Ravens Men\'s Legend Purple  Staff Practice Long Sleeve Performance T-Shirt%', 1, 0)
+        
+        + if(find_in_set('1976', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-253', p.product_groups), 1, 0) + if(find_in_set('95-290', p.product_groups), 1, 0) + if(find_in_set('96-260', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1976)
+          
+          
+          or (find_in_set('94-253', product_groups))or (find_in_set('95-290', product_groups))or (find_in_set('96-260', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-17 16:44:40')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-17 16:44:40')
+        and p.id not in ('24829')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-17 16:44:40')
+        and (year(end_date) < '1971' or end_date >= '2018-12-17 16:44:40')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike Baltimore Ravens Men\'s Legend Purple  Staff Practice Long Sleeve Performance T-Shirt%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-19 21:51:35 Asia/Shanghai] Warning: A MySQL query executed in 6.827 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike A.J. Howard Arizona Cardinals Youth Limited Green   2017 Salute to Service Jersey%', 1, 0)
+        
+        + if(find_in_set('1718', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-259', p.product_groups), 1, 0) + if(find_in_set('95-254', p.product_groups), 1, 0) + if(find_in_set('96-267', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1718)
+          
+          
+          or (find_in_set('94-259', product_groups))or (find_in_set('95-254', product_groups))or (find_in_set('96-267', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-19 21:51:28')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-19 21:51:28')
+        and p.id not in ('46064')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-19 21:51:28')
+        and (year(end_date) < '1971' or end_date >= '2018-12-19 21:51:28')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike A.J. Howard Arizona Cardinals Youth Limited Green   2017 Salute to Service Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    
+[2018-12-19 21:52:15 Asia/Shanghai] Warning: A MySQL query executed in 5.746 s. Query: 
+      select p.*, pi.name, pi.short_description, m.id as manufacturer_id, m.name as manufacturer_name, pp.price, pc.campaign_price, if(pc.campaign_price, pc.campaign_price, pp.price) as final_price, (0
+        + if(pi.name like '%Nike A.Q. Shipley Arizona Cardinals Youth Limited Green   Salute to Service Jersey%', 1, 0)
+        
+        + if(find_in_set('1718', categories), 1, 0)
+        
+        
+        + if(find_in_set('94-259', p.product_groups), 1, 0) + if(find_in_set('95-254', p.product_groups), 1, 0) + if(find_in_set('96-267', p.product_groups), 1, 0)
+        
+      ) as occurrences
+      from (
+        select p.id, p.code, p.sku, p.manufacturer_id, group_concat(ptc.category_id separator ',') as categories, p.keywords, p.product_groups, p.image, p.tax_class_id, p.quantity, p.views, p.purchases, p.date_created
+        from `litecart`.`lc_products` p
+        left join `litecart`.`lc_products_to_categories` ptc on (p.id = ptc.product_id)
+        where p.status = 1 
+          and (id
+          
+          or ptc.category_id in (1718)
+          
+          
+          or (find_in_set('94-259', product_groups))or (find_in_set('95-254', product_groups))or (find_in_set('96-267', product_groups))
+          
+        )
+        and (p.date_valid_from <= '2018-12-19 21:52:09')
+        and (year(p.date_valid_to) < '1971' or p.date_valid_to >= '2018-12-19 21:52:09')
+        and p.id not in ('1500')
+        group by ptc.product_id
+        
+        
+      ) p
+      left join `litecart`.`lc_products_info` pi on (pi.product_id = p.id and pi.language_code = 'en')
+      left join `litecart`.`lc_manufacturers` m on (m.id = p.manufacturer_id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as price
+        from `litecart`.`lc_products_prices`
+      ) pp on (pp.product_id = p.id)
+      left join (
+        select product_id, if(`USD`, `USD` / 1, `USD`) as campaign_price
+        from `litecart`.`lc_products_campaigns`
+        where (start_date <= '2018-12-19 21:52:09')
+        and (year(end_date) < '1971' or end_date >= '2018-12-19 21:52:09')
+        order by end_date asc
+      ) pc on (pc.product_id = p.id)
+      where (p.id
+        
+        or pi.name like '%Nike A.Q. Shipley Arizona Cardinals Youth Limited Green   Salute to Service Jersey%'
+        
+        
+      )
+      order by occurrences desc
+      limit 10;
+    

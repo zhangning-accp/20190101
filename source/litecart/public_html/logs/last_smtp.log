@@ -1,0 +1,28 @@
+Connecting to tcp://smtp.126.com:25 ...
+< 220 126.com Anti-spam GT for Coremail System (126com[20140526])
+> EHLO localhost
+< 250-mail
+< 250-PIPELINING
+< 250-AUTH LOGIN PLAIN 
+< 250-AUTH=LOGIN PLAIN
+< 250-coremail 1Uxr2xKj7kG0xkI17xGrU7I0s8FY2U3Uj8Cz28x1UUUUU7Ic2I0Y2UrnIityUCa0xDrUUUUj
+< 250-STARTTLS
+< 250 8BITMIME
+> STARTTLS
+< 220 Ready to start TLS
+> EHLO localhost
+< 250-mail
+< 250-PIPELINING
+< 250-AUTH LOGIN PLAIN 
+< 250-AUTH=LOGIN PLAIN
+< 250-coremail 1Uxr2xKj7kG0xkI17xGrU7I0s8FY2U3Uj8Cz28x1UUUUU7Ic2I0Y2UrEOk_yUCa0xDrUUUUj
+< 250-STARTTLS
+< 250 8BITMIME
+> AUTH LOGIN
+< 334 dXNlcm5hbWU6
+> emhhbmduaW5nX2hvbGxleUAxMjYuY29t
+< 334 UGFzc3dvcmQ6
+> MTQwMTAzenh5
+< 235 Authentication successful
+> MAIL FROM: <store@email.com>
+< 553 Mail from must equal authorized user

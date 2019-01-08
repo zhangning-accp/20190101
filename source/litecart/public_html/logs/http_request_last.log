@@ -1,0 +1,201 @@
+## [2018-12-18 11:11:40] Request ##############################
+
+GET /feeds/discussions.rss HTTP/1.1
+Host: www.litecart.net
+User-Agent: LiteCart/2.1.3
+Connection: Close
+
+
+
+## [2018-12-18 11:11:41] Response — 9334 bytes transferred in 0.334 s ##############################
+
+HTTP/1.1 200 OK
+Date: Tue, 18 Dec 2018 03:11:41 GMT
+Content-Type: application/rss+xml; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+Set-Cookie: __cfduid=d95ddea77915e22f6c877f0fd9d50cbbb1545102701; expires=Wed, 18-Dec-19 03:11:41 GMT; path=/; domain=.litecart.net; HttpOnly
+X-Powered-By: LiteCart HQ
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Language: en
+Set-Cookie: LCSESSID=30e82fc0526c54a8c6f86753f0043c04; path=/
+Set-Cookie: language_code=en; expires=Thu, 17-Jan-2019 03:11:41 GMT; Max-Age=2592000; path=/
+Set-Cookie: cart[uid]=5c18656d29a32; expires=Wed, 18-Dec-2019 03:11:41 GMT; Max-Age=31536000; path=/
+Set-Cookie: currency_code=USD; expires=Thu, 17-Jan-2019 03:11:41 GMT; Max-Age=2592000; path=/
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 48ae7189ae40c5fe-EWR
+
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>LiteCart Forum Discussions</title>
+    <link>https://www.litecart.net/forums/</link>
+    <description>The most recent forum activity.</description>
+    <language>en</language>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[How to remove index.php/ from urls?]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/8952/how-to-remove-index-php-from-urls</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[ruvaders]]></author>
+      <pubDate>Mon, 17 Dec 2018 17:39:12 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[Affiliate Program]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/2857/affiliate-program</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[pajezy]]></author>
+      <pubDate>Fri, 14 Dec 2018 16:59:08 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[Affiliates addon]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/4894/affiliates-addon</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[dodo]]></author>
+      <pubDate>Fri, 14 Dec 2018 16:58:43 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[Undefined index when creating categories]]></title>
+      <link>https://www.litecart.net/forums/15/errors-and-troubleshooting/8949/undefined-index-when-creating-categories</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[debt]]></author>
+      <pubDate>Fri, 14 Dec 2018 16:07:09 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Product Listing Sort Order]]></title>
+      <link>https://www.litecart.net/forums/3/installation-and-configuration/8943/product-listing-sort-order</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[mobgro]]></author>
+      <pubDate>Fri, 14 Dec 2018 00:53:52 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Home page (catalog) not showing up on server]]></title>
+      <link>https://www.litecart.net/forums/3/installation-and-configuration/8911/home-page-catalog-not-showing-up-on-server</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[frasmus]]></author>
+      <pubDate>Thu, 13 Dec 2018 22:21:04 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[I need help installing]]></title>
+      <link>https://www.litecart.net/forums/3/installation-and-configuration/8921/i-need-help-installing</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[mawashigeri]]></author>
+      <pubDate>Thu, 13 Dec 2018 22:17:45 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[file_exists(): open_basedir restriction in effect.]]></title>
+      <link>https://www.litecart.net/forums/15/errors-and-troubleshooting/8795/file-exists-open-basedir-restriction-in-effect</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[dodo]]></author>
+      <pubDate>Thu, 13 Dec 2018 22:13:20 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Add-ons]]></category>
+      <title><![CDATA[Vatlayar translations not found - address dump]]></title>
+      <link>https://www.litecart.net/forums/7/add-ons/8942/vatlayar-translations-not-found-address-dump</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[bobdrinktech]]></author>
+      <pubDate>Thu, 13 Dec 2018 11:51:26 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[Count Views for Products. Display in admin area.]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/8492/count-views-for-products-display-in-admin-area</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[gazzari]]></author>
+      <pubDate>Wed, 12 Dec 2018 22:50:44 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Filter and sidebar in mobile]]></title>
+      <link>https://www.litecart.net/forums/3/installation-and-configuration/8935/filter-and-sidebar-in-mobile</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[abcinsurance]]></author>
+      <pubDate>Wed, 12 Dec 2018 00:57:08 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Templates and CSS]]></category>
+      <title><![CDATA[Disabling mobile version (view)]]></title>
+      <link>https://www.litecart.net/forums/12/templates-and-css/6656/disabling-mobile-version-view</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[yesannem]]></author>
+      <pubDate>Tue, 11 Dec 2018 21:07:39 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[Forum]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/3907/forum</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[dbelov]]></author>
+      <pubDate>Sun, 09 Dec 2018 13:15:10 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[Filter by attributes]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/5350/filter-by-attributes</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[nivil]]></author>
+      <pubDate>Sun, 09 Dec 2018 11:50:33 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[How can I show prices with trailing zeroes?]]></title>
+      <link>https://www.litecart.net/forums/2/general-discussions/8928/how-can-i-show-prices-with-trailing-zeroes</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[rubendn]]></author>
+      <pubDate>Sun, 09 Dec 2018 11:42:53 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[How do I add custom tabs on product pages?]]></title>
+      <link>https://www.litecart.net/forums/2/general-discussions/8925/how-do-i-add-custom-tabs-on-product-pages</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[ruvaders]]></author>
+      <pubDate>Sat, 08 Dec 2018 09:17:32 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests]]></category>
+      <title><![CDATA[A Search-logger]]></title>
+      <link>https://www.litecart.net/forums/5/feature-requests/8855/a-search-logger</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[xyncro]]></author>
+      <pubDate>Wed, 05 Dec 2018 16:50:09 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[Error on price with product option]]></title>
+      <link>https://www.litecart.net/forums/15/errors-and-troubleshooting/8917/error-on-price-with-product-option</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[kiosummi]]></author>
+      <pubDate>Wed, 05 Dec 2018 14:54:08 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Add-ons]]></category>
+      <title><![CDATA[How to get payment due in payment module?]]></title>
+      <link>https://www.litecart.net/forums/7/add-ons/8914/how-to-get-payment-due-in-payment-module</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[jsl]]></author>
+      <pubDate>Tue, 04 Dec 2018 13:49:33 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Add-ons]]></category>
+      <title><![CDATA[Related products is making a mess]]></title>
+      <link>https://www.litecart.net/forums/7/add-ons/8913/related-products-is-making-a-mess</link>
+      <description><![CDATA[]]></description>
+      <author><![CDATA[bobdrinktech]]></author>
+      <pubDate>Mon, 03 Dec 2018 13:36:28 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
+
+
