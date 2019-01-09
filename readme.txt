@@ -10,3 +10,5 @@
 程序文件和sh文件介绍
 PhpConfig.py：该文件主要是生成config_n.inc.php、client_n.htaccess、admin_n.htaccess文件。
 create-site-and-db-data.sh:该文件主要是创建站点文件夹和数据文件夹，同时将web程序和数据文件拷贝到对应的目录下。
+
+insert-data-to-site.sh:添加测试数据的sh。需要有site_assgin.sql文件
